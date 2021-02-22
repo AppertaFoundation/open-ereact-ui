@@ -5,5 +5,16 @@ import Search from './Search';
 import SortPoper from './SortPoper';
 import Button from './Button';
 import SelectItem from './SelectItem';
-
-export { Layout, Card, Icon, Record, Search, SortPoper, Button, SelectItem };
+import Dialog, { DialogTitle } from './Dialog';
+export {
+  Layout,
+  Card,
+  Icon,
+  Record,
+  Search,
+  SortPoper,
+  Button,
+  SelectItem,
+  Dialog,
+  DialogTitle,
+};

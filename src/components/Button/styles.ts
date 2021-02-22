@@ -37,6 +37,11 @@ export const ButtonSecondary = withStyles((theme: Theme) => ({
     minWidth: '100%',
     borderRadius: '35px',
   },
+  outlined: {
+    minWidth: '100%',
+    color: theme.palette.secondary.main,
+    borderColor: theme.palette.secondary.main,
+  },
 }))(MuiButton);
 
 export const ButtonPrimmary = withStyles((theme: Theme) => ({
