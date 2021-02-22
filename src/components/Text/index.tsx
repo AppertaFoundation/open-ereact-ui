@@ -1,0 +1,24 @@
+import React from 'react';
+import { Box, Typography } from '@material-ui/core';
+
+const Text: React.FC<{
+  label: string;
+  children?: string | null;
+}> = ({ label, children }) => (
+  <Typography variant="subtitle1" component="div">
+    <Box component="div" display="inline" fontWeight="fontWeightBold">
+      {label}:
+    </Box>
+    {children && (
+      <Box
+        pl={1}
+        component="div"
+        display="inline"
+        fontWeight="fontWeightRegular"
+      >
+        {children}
+      </Box>
+    )}
+  </Typography>
+);
+export default Text;
