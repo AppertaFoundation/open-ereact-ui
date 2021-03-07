@@ -11,6 +11,7 @@ export const useStyles = makeStyles(theme => ({
   },
   fullWidth: {
     width: '100%',
+    height: 'calc(100vh - 135px)',
   },
   // demo: {
   //   backgroundColor: theme.palette.background.paper,

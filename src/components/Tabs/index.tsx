@@ -1,10 +1,25 @@
 import React from 'react';
-import { makeStyles, Theme, withStyles } from '@material-ui/core/styles';
+import {
+  makeStyles,
+  Theme,
+  withStyles,
+  useTheme,
+} from '@material-ui/core/styles';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+
 import { Grid } from '@material-ui/core';
 import Tabs from '@material-ui/core/Tabs';
 import MuiTab from '@material-ui/core/Tab';
-import uniqid from 'uniqid';
 
+function useUpMd() {
+  const theme = useTheme();
+  const isUpMd = useMediaQuery(theme.breakpoints?.up('md'));
+  const [upMd, setUpMd] = React.useState(false);
+  React.useEffect(() => {
+    if (isUpMd !== upMd) setUpMd(isUpMd);
+  }, [isUpMd]);
+  return upMd;
+}
 const Tab = withStyles((theme: Theme) => ({
   root: {
     color: '#fff',
@@ -29,16 +44,23 @@ interface TabPanelProps {
 
 function TabPanel(props: TabPanelProps) {
   const { children, value, index, ...other } = props;
+  const upMd = useUpMd();
 
+  const hidden = upMd ? false : value !== index;
   return (
     <div
       role="tabpanel"
-      hidden={value !== index}
+      hidden={hidden}
       id={`simple-tabpanel-${index}`}
       aria-labelledby={`simple-tab-${index}`}
       {...other}
     >
-      <div style={{ display: value === index ? 'block' : 'none' }}>
+      <div
+        style={{
+          display: hidden ? 'none' : 'block',
+          margin: upMd ? 16 : 0,
+        }}
+      >
         <>{children}</>
       </div>
     </div>
@@ -69,6 +91,8 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 function SimpleTabs({ children }) {
   const classes = useStyles();
+  const upMd = useUpMd();
+
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
@@ -89,6 +113,7 @@ function SimpleTabs({ children }) {
       >
         {children.map((child, index) => (
           <Tab
+            disabled={upMd}
             disableRipple
             disableFocusRipple
             label={child.props.label}

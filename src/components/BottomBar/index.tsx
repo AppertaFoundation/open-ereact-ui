@@ -10,7 +10,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     bottom: 0,
     left: 0,
     zIndex: 100,
-    backgroundColor: theme.palette.primary.light,
+    backgroundColor: theme.palette.primary.main,
     textAlign: 'center',
     paddingTop: 5,
     paddingBottom: 5,

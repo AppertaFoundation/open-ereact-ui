@@ -2,6 +2,7 @@
 coverage
 build
 node_modules
+yarn.lock
 stats.json
 .pnp
 .pnp.js
