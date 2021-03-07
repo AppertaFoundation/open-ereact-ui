@@ -10,6 +10,7 @@ export const ButtonSuccess = withStyles((theme: Theme) => ({
   },
   root: {
     borderRadius: '35px',
+    padding: '10px 15px',
   },
 }))(MuiButton);
 
@@ -33,9 +34,10 @@ export const ButtonSecondary = withStyles((theme: Theme) => ({
       color: theme.palette.secondary.contrastText,
     },
   },
+
   root: {
-    minWidth: '100%',
     borderRadius: '35px',
+    padding: '10px 15px',
   },
   outlined: {
     minWidth: '100%',
@@ -47,6 +49,7 @@ export const ButtonSecondary = withStyles((theme: Theme) => ({
 export const ButtonPrimmary = withStyles((theme: Theme) => ({
   root: {
     borderRadius: '35px',
+    padding: '10px 15px',
   },
   contained: {
     minWidth: '100%',

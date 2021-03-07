@@ -11,6 +11,8 @@ import { Helmet } from 'react-helmet-async';
 import { Switch, Route, BrowserRouter, Redirect } from 'react-router-dom';
 
 import { HomePage } from './pages/HomePage/Loadable';
+import { Monitoring } from './pages/Monitoring/Loadable';
+
 import { NotFoundPage } from '../components/NotFoundPage/Loadable';
 import { useTranslation } from 'react-i18next';
 
@@ -38,7 +40,12 @@ export function App() {
           authenticated={authenticated}
           bottomToolBar
         />
-        {/* <Route exact path="/a" component={HomePage} /> */}
+        <ProtectedRoute
+          exact
+          path={process.env.PUBLIC_URL + '/monitoring/:id'}
+          component={Monitoring}
+          authenticated={authenticated}
+        />
         <Route component={NotFoundPage} />
       </Switch>
     </BrowserRouter>
