@@ -9,6 +9,7 @@ import Dialog, { DialogTitle } from './Dialog';
 import SubPageTopBar from './SubPageTopBar';
 import BottomBar from './BottomBar';
 import Tabs, { TabPanelWrapper } from './Tabs';
+import RadioGroup from './RadioGroup';
 export {
   Layout,
   Card,
@@ -24,4 +25,5 @@ export {
   BottomBar,
   Tabs,
   TabPanelWrapper,
+  RadioGroup,
 };

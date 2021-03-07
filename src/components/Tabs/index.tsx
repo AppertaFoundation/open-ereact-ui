@@ -1,7 +1,9 @@
 import React from 'react';
 import { makeStyles, Theme, withStyles } from '@material-ui/core/styles';
+import { Grid } from '@material-ui/core';
 import Tabs from '@material-ui/core/Tabs';
 import MuiTab from '@material-ui/core/Tab';
+import uniqid from 'uniqid';
 
 const Tab = withStyles((theme: Theme) => ({
   root: {
@@ -94,12 +96,15 @@ function SimpleTabs({ children }) {
           />
         ))}
       </Tabs>
-
-      {children.map((child, index) => (
-        <TabPanel value={value} index={index}>
-          {child}
-        </TabPanel>
-      ))}
+      <Grid container justify="center">
+        {children.map((child, index) => (
+          <Grid item xs={12} md={4}>
+            <TabPanel value={value} index={index}>
+              {child}
+            </TabPanel>
+          </Grid>
+        ))}
+      </Grid>
     </div>
   );
 }
