@@ -9,9 +9,16 @@ export const useStyles = makeStyles(theme => ({
     borderRadius: '35px',
     padding: '15px',
   },
+  isbSection: {
+    backgroundColor: '#fff',
+    borderRadius: '35px',
+  },
   fullWidth: {
     width: '100%',
     height: 'calc(100vh - 135px)',
+  },
+  identityCard: {
+    paddingTop: 0,
   },
   // demo: {
   //   backgroundColor: theme.palette.background.paper,
