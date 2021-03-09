@@ -6,8 +6,9 @@ import {
   TextField,
   FormLabel,
 } from '@material-ui/core';
+import { ErrorMsg } from 'components';
 
-const C = ({ register, bloodPreasureValidate }) => {
+const C = ({ register, bloodPreasureValidate, errors }) => {
   return (
     <Grid container wrap="nowrap" direction="column" spacing={2}>
       <Grid item md={12}>
@@ -50,9 +51,7 @@ const C = ({ register, bloodPreasureValidate }) => {
               name="systolic.units"
               value="/mmHg"
             />
-            {/* {errors && (
-            <ErrorMsg name={'systolic.magnitude'} errors={errors} />
-          )} */}
+            {errors && <ErrorMsg name={'systolic.magnitude'} errors={errors} />}
           </Grid>
           <Grid item>
             <TextField
@@ -89,12 +88,9 @@ const C = ({ register, bloodPreasureValidate }) => {
               name="diastolic.units"
               value="/mmHg"
             />
-            {/* {errors && (
-            <ErrorMsg
-              name={'diastolic.magnitude'}
-              errors={errors}
-            />
-          )} */}
+            {errors && (
+              <ErrorMsg name={'diastolic.magnitude'} errors={errors} />
+            )}
           </Grid>
         </Grid>
       </Grid>
@@ -125,9 +121,7 @@ const C = ({ register, bloodPreasureValidate }) => {
           }}
         />
         <input type="hidden" ref={register} name="pulse.units" value="/min" />
-        {/* {errors && (
-        <ErrorMsg name={'pulse.magnitude'} errors={errors} />
-      )} */}
+        {errors && <ErrorMsg name={'pulse.magnitude'} errors={errors} />}
       </Grid>
     </Grid>
   );

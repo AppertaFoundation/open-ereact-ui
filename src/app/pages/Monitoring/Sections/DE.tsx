@@ -1,12 +1,7 @@
 import React from 'react';
-import {
-  Box,
-  Grid,
-  InputAdornment,
-  TextField,
-  FormLabel,
-} from '@material-ui/core';
+import { Grid, InputAdornment, TextField } from '@material-ui/core';
 import { RadioGroup } from 'components';
+import { ErrorMsg } from 'components';
 
 const CONSCIOUSNESS = [
   {
@@ -32,7 +27,7 @@ const CONSCIOUSNESS = [
 ];
 const tempatureUnit = '\u2103';
 
-const DE = ({ register }) => {
+const DE = ({ register, errors }) => {
   return (
     <Grid container wrap="nowrap" direction="column" spacing={2}>
       <Grid item md={12}>
@@ -40,7 +35,7 @@ const DE = ({ register }) => {
           // disabled={disabled}
           name="acvpu.code"
           label="Consciousness"
-          //   errors={errors}
+          errors={errors}
           // defaultValue={news2Default?.acvpu?.code}
           register={register({
             required: {
@@ -86,12 +81,7 @@ const DE = ({ register }) => {
           name="temperature.units"
           value={tempatureUnit}
         />
-        {/* {errors && (
-                        <ErrorMsg
-                          name={'tempature.magnitude'}
-                          errors={errors}
-                        />
-                      )} */}
+        {errors && <ErrorMsg name={'temperature.magnitude'} errors={errors} />}
       </Grid>
     </Grid>
   );

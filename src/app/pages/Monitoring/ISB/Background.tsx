@@ -16,7 +16,7 @@ import { useStyles } from '../styles';
 
 const MAX_CHARS_ISB_TABS = 255;
 
-const Situation = ({ register }) => {
+const Background = ({ register }) => {
   const [avaibleChars, setAvaibleChars] = React.useState(0);
   const [open, setOpen] = React.useState(false);
 
@@ -32,15 +32,15 @@ const Situation = ({ register }) => {
   return (
     <Box p={3} pt={2} flex="auto" display="flex" className={classes.situation}>
       <Box flex="auto" width={3 / 4}>
-        <InputLabel>Situation</InputLabel>
+        <InputLabel>Background</InputLabel>
         <InputBase
-          name="situation"
+          name="background"
           multiline
           rows="5"
           fullWidth
           onChange={handleChangeAvaibleCharts}
           inputRef={register}
-          placeholder="Please enter patient information at this point to indicate what that patient situation is."
+          placeholder="Please enter patient information at this point to indicate what that patient background is."
         />
         {/* {errors && <ErrorMsg name={'notes'} errors={errors} />} */}
       </Box>
@@ -70,20 +70,27 @@ const Situation = ({ register }) => {
         <Dialog open={open} onClose={handleClose}>
           <DialogTitle id="title" onClose={handleClose}>
             <Typography component="div" noWrap variant="h5">
-              Situation Information
+              Background Information
             </Typography>
           </DialogTitle>
 
           <DialogContent>
             <List>
               <ListItem>
-                <ListItemText primary={' Why are you concerned?'} />
+                <ListItemText primary={'What history does the patient have?'} />
               </ListItem>
               <ListItem>
-                <ListItemText primary={'Is there any abnormal physiology?'} />
+                <ListItemText
+                  primary={'Has the patient been complaining of being unwell??'}
+                />
               </ListItem>
               <ListItem>
-                <ListItemText primary={'Hint 3'} />
+                <ListItemText primary={'Is the patient taking medication'} />
+              </ListItem>
+              <ListItem>
+                <ListItemText
+                  primary={'What was the patient’s previous NEWS2 score?'}
+                />
               </ListItem>
             </List>
           </DialogContent>
@@ -93,4 +100,4 @@ const Situation = ({ register }) => {
   );
 };
 
-export default Situation;
+export default Background;

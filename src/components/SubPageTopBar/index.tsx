@@ -7,8 +7,8 @@ interface Props {
 }
 const SubPageTopBar: React.FC<Props> = ({ children }) => {
   return (
-    <AppBar open={false} color="default">
-      <Toolbar>{children}</Toolbar>
+    <AppBar open={false} color="inherit">
+      {children}
     </AppBar>
   );
 };

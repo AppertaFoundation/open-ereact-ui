@@ -10,6 +10,8 @@ import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { Grid } from '@material-ui/core';
 import Tabs from '@material-ui/core/Tabs';
 import MuiTab from '@material-ui/core/Tab';
+import clsx from 'clsx';
+import uniqid from 'uniqid';
 
 function useUpMd() {
   const theme = useTheme();
@@ -17,14 +19,16 @@ function useUpMd() {
   const [upMd, setUpMd] = React.useState(false);
   React.useEffect(() => {
     if (isUpMd !== upMd) setUpMd(isUpMd);
-  }, [isUpMd]);
+  }, [isUpMd, upMd]);
   return upMd;
 }
 const Tab = withStyles((theme: Theme) => ({
   root: {
-    margin: theme.spacing(2),
-    borderRadius: '35px',
+    margin: theme.spacing(0),
     fontWeight: 'bold',
+    borderTop: '2px solid #DADADA',
+    borderRadius: '15px 15px 0px 0px',
+    backgroundColor: theme.palette.primary.contrastText,
     [theme.breakpoints.only('xs')]: {
       margin: theme.spacing(0),
     },
@@ -36,10 +40,11 @@ interface TabPanelProps {
   index: any;
   value: any;
   resizeDesktop?: boolean;
+  className?: any;
 }
 
 function TabPanel(props: TabPanelProps) {
-  const { children, value, index, resizeDesktop, ...other } = props;
+  const { children, value, index, resizeDesktop, className, ...other } = props;
   const upMd = useUpMd();
 
   const hidden = upMd && resizeDesktop ? false : value !== index;
@@ -54,7 +59,6 @@ function TabPanel(props: TabPanelProps) {
       <div
         style={{
           display: hidden ? 'none' : 'block',
-          margin: upMd ? 16 : 0,
         }}
       >
         <>{children}</>
@@ -66,30 +70,39 @@ function TabPanel(props: TabPanelProps) {
 export const TabPanelWrapper: React.FC<{
   label: string;
   children: React.ReactNode | React.ReactNode[];
-}> = ({ children }) => <React.Fragment>{children}</React.Fragment>;
+  className?: any;
+  id: string;
+}> = ({ children, className = {} }) => (
+  <div className={className}>{children}</div>
+);
+
+function a11yPropsKey(id: any) {
+  return {
+    key: `tab-body-${id}`,
+  };
+}
 
 function a11yProps(index: any) {
   return {
-    id: `simple-tab-${index}`,
+    key: uniqid(),
+    // id: `simple-tab-${index}`,
     'aria-controls': `simple-tabpanel-${index}`,
   };
 }
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
+    height: '100%',
+    display: 'flex',
+    flexFlow: 'column nowrap',
     flexGrow: 1,
-    color: theme.palette.primary.main,
-    margin: theme.spacing(2),
-    [theme.breakpoints.only('xs')]: {
-      margin: theme.spacing(0),
-    },
   },
   contained: {
     color: '#fff',
     backgroundColor: theme.palette.primary.main,
-    margin: theme.spacing(2),
-    borderRadius: '35px',
     fontWeight: 'bold',
+    borderTop: '2px solid #DADADA',
+    borderRadius: '15px 15px 0px 0px',
     [theme.breakpoints.only('xs')]: {
       margin: theme.spacing(0),
     },
@@ -97,12 +110,14 @@ const useStyles = makeStyles((theme: Theme) => ({
   indicator: ({ hidden = false }: { hidden?: boolean }) => ({
     ...(hidden ? { visibility: 'hidden' } : {}),
   }),
-  bootomPadding: {
-    paddingBottom: theme.spacing(1),
-  },
 }));
 
-function SimpleTabs({ children, contained, resizeDesktop = false }) {
+const SimpleTabs: React.FC<{
+  children: JSX.Element[];
+  contained?: boolean;
+  resizeDesktop?: boolean;
+  className?: any;
+}> = ({ children, contained, resizeDesktop = false, className }) => {
   const upMd = useUpMd();
   const classes = useStyles({ hidden: upMd && resizeDesktop });
 
@@ -117,7 +132,6 @@ function SimpleTabs({ children, contained, resizeDesktop = false }) {
       <Tabs
         value={value}
         onChange={handleChange}
-        className={classes.bootomPadding}
         indicatorColor={contained ? 'secondary' : 'primary'}
         TabIndicatorProps={{ className: classes.indicator }}
         variant="fullWidth"
@@ -126,25 +140,42 @@ function SimpleTabs({ children, contained, resizeDesktop = false }) {
       >
         {children.map((child, index) => (
           <Tab
-            {...(contained ? { className: classes.contained } : {})}
+            {...(contained ? { className: clsx(classes.contained) } : {})}
             disabled={upMd && resizeDesktop}
             disableRipple
             disableFocusRipple
-            label={child.props.label}
+            label={child?.props?.label}
             {...a11yProps(index)}
           />
         ))}
       </Tabs>
-      <Grid container justify="center">
-        {children.map((child, index) => (
-          <Grid item xs={12} {...(resizeDesktop ? { md: 4 } : {})}>
-            <TabPanel resizeDesktop={resizeDesktop} value={value} index={index}>
-              {child}
-            </TabPanel>
-          </Grid>
-        ))}
+      <Grid container justify="center" style={{ height: '100%' }}>
+        {children.map((child, index) => {
+          const hidden = upMd && resizeDesktop ? false : value !== index;
+          return (
+            <Grid
+              {...a11yPropsKey(child?.props?.id)}
+              item
+              xs={12}
+              {...(className ? { className } : {})}
+              className={className}
+              style={{
+                display: hidden ? 'none' : '',
+              }}
+              {...(resizeDesktop ? { md: 4 } : {})}
+            >
+              <TabPanel
+                resizeDesktop={resizeDesktop}
+                value={value}
+                index={index}
+              >
+                {child}
+              </TabPanel>
+            </Grid>
+          );
+        })}
       </Grid>
     </div>
   );
-}
+};
 export default SimpleTabs;

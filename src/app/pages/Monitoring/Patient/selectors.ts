@@ -29,3 +29,8 @@ export const selectNHS = createSelector(
   [selectDomain],
   patient => patient.patient?.nhsnumber,
 );
+
+export const selectId = createSelector(
+  [selectDomain],
+  patient => patient.patient?.id,
+);

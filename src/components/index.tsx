@@ -10,6 +10,11 @@ import SubPageTopBar from './SubPageTopBar';
 import BottomBar from './BottomBar';
 import Tabs, { TabPanelWrapper } from './Tabs';
 import RadioGroup from './RadioGroup';
+import { ErrorMsg } from './ErrorMessage';
+import NativeSelect from './NativeSelect';
+import { IconLabel, IconButton } from './IconButton';
+import BoxWrapper from './BoxWrapper';
+
 export {
   Layout,
   Card,
@@ -26,4 +31,9 @@ export {
   Tabs,
   TabPanelWrapper,
   RadioGroup,
+  ErrorMsg,
+  NativeSelect,
+  IconLabel,
+  IconButton,
+  BoxWrapper,
 };

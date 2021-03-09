@@ -9,9 +9,9 @@ import {
   IconButton,
   Typography,
 } from '@material-ui/core';
-// import  from '../ErrorMsg/index';
 import DeleteIcon from '@material-ui/icons/Delete';
-// import { ErrorMsg } from '../ErrorMessage';
+import { ErrorMsg } from '../ErrorMessage';
+
 const RADIO_OPTIONS = [
   {
     id: 'yes',
@@ -106,7 +106,7 @@ const RadioGroupMUI: React.FC<IRadioGroup> = ({
           ))}
         </Grid>
       </RadioGroup>
-      {/* {errors && name && <ErrorMsg name={name} errors={errors} />} */}
+      {errors && name && <ErrorMsg name={name} errors={errors} />}
     </div>
   );
 };

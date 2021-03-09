@@ -6,8 +6,9 @@ export const useStyles = makeStyles(theme => ({
   section: {
     backgroundColor: '#fff',
     border: '2px solid #fff',
-    borderRadius: '35px',
-    padding: '15px',
+    borderRadius: '0px 0px 15px 15px',
+    height: '100%',
+    padding: '8px',
   },
   isbSection: {
     backgroundColor: '#fff',
@@ -19,23 +20,12 @@ export const useStyles = makeStyles(theme => ({
   },
   identityCard: {
     paddingTop: 0,
+    margin: 0,
+    borderRadius: '0px 0px 15px 15px',
   },
-  // demo: {
-  //   backgroundColor: theme.palette.background.paper,
-  //   height: 200,
-  //   margin: theme.spacing(2),
-  //   [theme.breakpoints.up('sm')]: {
-  //     height: 100,
-  //   },
-  //   [theme.breakpoints.up('md')]: {
-  //     height: 200,
-  //   },
-  // },
-
-  // subSection: {
-  //   backgroundColor: '#fff',
-  //   border: '2px solid #DADADA',
-  //   borderRadius: '35px',
-  //   padding: '15px',
-  // },
+  situation: {
+    backgroundColor: '#fff',
+    border: '2px solid #fff',
+    borderRadius: '0px 0px 15px 15px',
+  },
 }));
