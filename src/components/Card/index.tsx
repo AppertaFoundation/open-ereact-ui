@@ -38,6 +38,7 @@ interface Props {
   id?: string;
   children?: JSX.Element;
   news2?: any;
+  className?: any;
 }
 
 const IconButtonNews2 = withStyles({
@@ -49,7 +50,14 @@ const IconButtonNews2 = withStyles({
   },
 })(MuiIconButton);
 
-const Card: React.FC<Props> = ({ name, identifier, news2, children, id }) => {
+const Card: React.FC<Props> = ({
+  name,
+  identifier,
+  news2,
+  children,
+  id,
+  className,
+}) => {
   const classes = useStyles();
   const [open, setOpen] = useState<boolean>(false);
 
@@ -73,7 +81,13 @@ const Card: React.FC<Props> = ({ name, identifier, news2, children, id }) => {
     history.push(`/patient-overview/${id}`);
   return (
     <>
-      <Box className={clsx(classes.card, classes.roundedCorners)}>
+      <Box
+        className={clsx(
+          classes.card,
+          classes.roundedCorners,
+          className && className,
+        )}
+      >
         <CardHeader
           title={
             <CardActionArea onClick={redirectToPatientOverview}>

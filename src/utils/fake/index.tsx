@@ -1,3 +1,3 @@
 import PATIENT_LIST, { searchByNameOrNhs, sort } from './PatientList';
-
-export { PATIENT_LIST, searchByNameOrNhs, sort };
+import ASSESSMENTS_RESULT from './AssessmentsResult';
+export { PATIENT_LIST, ASSESSMENTS_RESULT, searchByNameOrNhs, sort };

@@ -24,9 +24,17 @@ const lightTheme = responsiveFontSizes(
       // },
       primary: {
         main: '#29235c',
+
+        // light: '#546088',
+        // main: '#28365b',
+        // dark: '#001031',
+        // main: 'rgb(83, 79, 124)',
+        // dark: '#29235c',
+        contrastText: '#fff',
       },
       secondary: {
         main: '#e96d18',
+        contrastText: '#000000',
       },
       success: {
         main: '#397F3A',

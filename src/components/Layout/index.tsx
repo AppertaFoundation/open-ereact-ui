@@ -49,26 +49,31 @@ const Layout: React.FC<Props> = ({
       <div className={classes.root}>
         {true ? (
           <>
-            <AppBar open={open}>
-              <Toolbar className={classes.appBarHeight}>
-                {!xsSM && (
-                  <IconButton
-                    color="inherit"
-                    aria-label="open drawer"
-                    onClick={handleDrawerOpen}
-                    edge="start"
-                    className={clsx(classes.menuButton, open && classes.hide)}
-                  >
-                    <MenuIcon />
-                  </IconButton>
-                )}
-                <Box m={1}>
-                  <img height={40} src={LogoDark} alt="Care Protect logo" />
-                </Box>
-                <Typography variant="h6" className={classes.title}>
-                  {header}
-                </Typography>
-                {/* <div>
+            {header && (
+              <>
+                <AppBar open={open}>
+                  <Toolbar className={classes.appBarHeight}>
+                    {!xsSM && (
+                      <IconButton
+                        color="inherit"
+                        aria-label="open drawer"
+                        onClick={handleDrawerOpen}
+                        edge="start"
+                        className={clsx(
+                          classes.menuButton,
+                          open && classes.hide,
+                        )}
+                      >
+                        <MenuIcon />
+                      </IconButton>
+                    )}
+                    <Box m={1}>
+                      <img height={40} src={LogoDark} alt="Care Protect logo" />
+                    </Box>
+                    <Typography variant="h6" className={classes.title}>
+                      {header}
+                    </Typography>
+                    {/* <div>
                   <IconButton
                     aria-label="account of current user"
                     aria-controls="menu-appbar"
@@ -101,10 +106,12 @@ const Layout: React.FC<Props> = ({
                     </MenuItem>
                   </Menu>
                 </div> */}
-              </Toolbar>
-            </AppBar>
+                  </Toolbar>
+                </AppBar>
 
-            <Drawer onClose={handleDrawerClose} open={open} />
+                <Drawer onClose={handleDrawerClose} open={open} />
+              </>
+            )}
 
             <main
               className={clsx(classes.content, {
