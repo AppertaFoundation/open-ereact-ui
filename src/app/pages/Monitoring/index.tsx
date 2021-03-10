@@ -75,7 +75,7 @@ export function Monitoring() {
         <title>Monitoring</title>
         <meta name="description" content="Monitoring" />
       </Helmet>
-      <Header onEdit={handleEdit} />
+      <Header title="Monitoring" isMonitoring onEdit={handleEdit} />
       <form
         className={classes.fullWidth}
         id={`monitoring-isba`}

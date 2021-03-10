@@ -12,7 +12,7 @@ import { Switch, Route, BrowserRouter, Redirect } from 'react-router-dom';
 
 import { HomePage } from './pages/HomePage/Loadable';
 import { Monitoring } from './pages/Monitoring/Loadable';
-
+import { Recommendations } from './pages/Recommendations/Loadable';
 import { NotFoundPage } from '../components/NotFoundPage/Loadable';
 import { useTranslation } from 'react-i18next';
 
@@ -44,6 +44,12 @@ export function App() {
           exact
           path={process.env.PUBLIC_URL + '/monitoring/:id'}
           component={Monitoring}
+          authenticated={authenticated}
+        />
+        <ProtectedRoute
+          exact
+          path={process.env.PUBLIC_URL + '/recommendations/:id'}
+          component={Recommendations}
           authenticated={authenticated}
         />
         <Route component={NotFoundPage} />

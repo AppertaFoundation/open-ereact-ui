@@ -14,6 +14,7 @@ import { ErrorMsg } from './ErrorMessage';
 import NativeSelect from './NativeSelect';
 import { IconLabel, IconButton } from './IconButton';
 import BoxWrapper from './BoxWrapper';
+import Text from './Text';
 
 export {
   Layout,
@@ -36,4 +37,5 @@ export {
   IconLabel,
   IconButton,
   BoxWrapper,
+  Text,
 };

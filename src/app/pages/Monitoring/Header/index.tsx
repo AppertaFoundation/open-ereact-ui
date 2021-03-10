@@ -30,7 +30,11 @@ import { useHistory, useParams } from 'react-router-dom';
 import { selectName, selectNHS } from '../Patient/selectors';
 import { usePatientSlice } from '../Patient/slice';
 
-const Header = ({ onEdit }) => {
+const Header: React.FC<{
+  onEdit?: any;
+  isMonitoring?: boolean;
+  title: string;
+}> = ({ onEdit, isMonitoring = false, title }) => {
   const { actions } = usePatientSlice();
   const theme = useTheme();
   const downMd = useMediaQuery(theme.breakpoints?.down('md'));
@@ -57,7 +61,7 @@ const Header = ({ onEdit }) => {
         </MuiIconButton>
         <Box m={1}>
           <Typography variant={downMd ? 'h6' : 'h4'} display="block" noWrap>
-            {'Monitoring:'}
+            {title}
           </Typography>
         </Box>
         <Box ml={1}>
@@ -68,7 +72,7 @@ const Header = ({ onEdit }) => {
             {identifier}
           </Typography>
         </Box>
-        <EditDialog onEdit={onEdit} />
+        {isMonitoring && <EditDialog onEdit={onEdit} />}
       </Toolbar>
     </SubPageTopBar>
   );
