@@ -12,11 +12,14 @@ import { Switch, Route, BrowserRouter, Redirect } from 'react-router-dom';
 
 import { HomePage } from './pages/HomePage/Loadable';
 import { Monitoring } from './pages/Monitoring/Loadable';
-
+import { Recommendations } from './pages/Recommendations/Loadable';
+import { SituationBackground } from './pages/PatientOverview/Sections/Maximized/SituationBackground/Loadable';
+import { ContingencyPlanning } from './pages/PatientOverview/Sections/Maximized/ContingencyPlanning/Loadable';
 import { NotFoundPage } from '../components/NotFoundPage/Loadable';
 import { useTranslation } from 'react-i18next';
 
 import { Layout } from 'components';
+import { PatientOveriview } from './pages/PatientOverview/Loadable';
 
 export function App() {
   const { i18n } = useTranslation();
@@ -44,6 +47,36 @@ export function App() {
           exact
           path={process.env.PUBLIC_URL + '/monitoring/:id'}
           component={Monitoring}
+          authenticated={authenticated}
+        />
+        <ProtectedRoute
+          exact
+          path={process.env.PUBLIC_URL + '/recommendations/:id'}
+          component={Recommendations}
+          authenticated={authenticated}
+        />
+        <ProtectedRoute
+          exact
+          path={process.env.PUBLIC_URL + '/patient-overview/:id'}
+          component={PatientOveriview}
+          authenticated={authenticated}
+        />
+        <ProtectedRoute
+          exact
+          path={
+            process.env.PUBLIC_URL +
+            '/patient-overview/:id/situation-background'
+          }
+          component={SituationBackground}
+          authenticated={authenticated}
+        />
+        <ProtectedRoute
+          exact
+          path={
+            process.env.PUBLIC_URL +
+            '/patient-overview/:id/contingency-planning'
+          }
+          component={ContingencyPlanning}
           authenticated={authenticated}
         />
         <Route component={NotFoundPage} />

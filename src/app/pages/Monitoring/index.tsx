@@ -5,14 +5,14 @@ import { useHistory } from 'react-router-dom';
 
 import { Box } from '@material-ui/core';
 import { BottomBar, Button, Tabs, TabPanelWrapper } from 'components';
-import Header from './Header';
+import Header from '../Patient/Header';
 import { useStyles } from './styles';
 import { useForm } from 'react-hook-form';
 import { useMonitoringSlice } from './slice';
 import { AB, C, DE } from './Sections';
 import { Situation, Background, Identity } from './ISB';
 import Summary from './Summary';
-import { selectId } from './Patient/selectors';
+import { selectId } from '../Patient/selectors';
 
 export function Monitoring() {
   const classes = useStyles();
@@ -75,7 +75,7 @@ export function Monitoring() {
         <title>Monitoring</title>
         <meta name="description" content="Monitoring" />
       </Helmet>
-      <Header onEdit={handleEdit} />
+      <Header title="Monitoring" isMonitoring onEdit={handleEdit} />
       <form
         className={classes.fullWidth}
         id={`monitoring-isba`}

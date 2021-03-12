@@ -46,6 +46,7 @@
     "react-helmet-async": "1.0.6",
     "react-hook-form": "6.15.4",
     "react-i18next": "11.7.2",
+    "react-material-ui-carousel": "2.2.1",
     "react-qr-reader": "2.2.1",
     "react-redux": "7.2.1",
     "react-router-dom": "5.2.0",

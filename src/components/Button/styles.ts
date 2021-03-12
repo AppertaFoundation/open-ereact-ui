@@ -38,6 +38,8 @@ export const ButtonSecondary = withStyles((theme: Theme) => ({
   root: {
     borderRadius: '35px',
     padding: '10px 15px',
+    color: '#e94e1b',
+    textTransform: 'none',
   },
   outlined: {
     minWidth: '100%',

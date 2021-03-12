@@ -23,14 +23,20 @@ import {
 } from '@material-ui/core';
 import MuiIconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import EditIcon from '@material-ui/icons/Edit';
 
 import { useHistory, useParams } from 'react-router-dom';
 
-import { selectName, selectNHS } from '../Patient/selectors';
-import { usePatientSlice } from '../Patient/slice';
+import { selectName, selectNHS } from '../selectors';
+import { usePatientSlice } from '../slice';
 
-const Header = ({ onEdit }) => {
+const Header: React.FC<{
+  onEdit?: any;
+  isMonitoring?: boolean;
+  title: string;
+  returnTo?: string;
+}> = ({ onEdit, isMonitoring = false, title, returnTo }) => {
   const { actions } = usePatientSlice();
   const theme = useTheme();
   const downMd = useMediaQuery(theme.breakpoints?.down('md'));
@@ -47,28 +53,38 @@ const Header = ({ onEdit }) => {
     dispatch(actions.loadPatient(id));
   }, [actions, dispatch, id]);
 
-  const goBack = () => history.go(-1);
+  const close = () => history.push('/');
+  const goBack = () => history.push(`${returnTo}${id}`);
 
   return (
     <SubPageTopBar>
       <Toolbar>
-        <MuiIconButton color="inherit" onClick={goBack} edge="start">
-          <CloseIcon htmlColor="#000" />
-        </MuiIconButton>
+        {returnTo ? (
+          <MuiIconButton color="inherit" onClick={goBack} edge="start">
+            <ArrowBackIcon htmlColor="#000" />
+          </MuiIconButton>
+        ) : (
+          <MuiIconButton color="inherit" onClick={close} edge="start">
+            <CloseIcon htmlColor="#000" />
+          </MuiIconButton>
+        )}
+
         <Box m={1}>
           <Typography variant={downMd ? 'h6' : 'h4'} display="block" noWrap>
-            {'Monitoring:'}
+            {title}
           </Typography>
         </Box>
-        <Box ml={1}>
-          <Typography variant={downMd ? 'body1' : 'h6'} display="block">
-            {name}
-          </Typography>
-          <Typography variant="body1" color="textSecondary">
-            {identifier}
-          </Typography>
-        </Box>
-        <EditDialog onEdit={onEdit} />
+        {!returnTo && (
+          <Box ml={1}>
+            <Typography variant={downMd ? 'body1' : 'h6'} display="block">
+              {name}
+            </Typography>
+            <Typography variant="body1" color="textSecondary">
+              {identifier}
+            </Typography>
+          </Box>
+        )}
+        {isMonitoring && <EditDialog onEdit={onEdit} />}
       </Toolbar>
     </SubPageTopBar>
   );

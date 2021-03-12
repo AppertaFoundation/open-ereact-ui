@@ -1,12 +1,10 @@
 import React from 'react';
 import { Card, Record } from 'components';
 import { useSelector } from 'react-redux';
-import { selectPatient } from '../../Patient/selectors';
-import { useStyles } from '../styles';
+import { selectPatient } from './selectors';
 
-const Identity = () => {
+const Patient = () => {
   const patient = useSelector(selectPatient);
-  const classes = useStyles();
 
   return (
     <Card
@@ -14,7 +12,7 @@ const Identity = () => {
       identifier={patient?.nhsnumber}
       news2={patient?.news2}
       id={patient?.id}
-      className={classes.identityCard}
+      //   className={classes.identityCard}
     >
       <Record
         birthDate={patient?.birthDate}
@@ -28,4 +26,4 @@ const Identity = () => {
   );
 };
 
-export default Identity;
+export default Patient;
