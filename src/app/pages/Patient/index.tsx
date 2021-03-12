@@ -1,12 +1,10 @@
 import React from 'react';
 import { Card, Record } from 'components';
 import { useSelector } from 'react-redux';
-import { selectPatient } from '../Patient/selectors';
-import { useStyles } from '../styles';
+import { selectPatient } from './selectors';
 
 const Patient = () => {
   const patient = useSelector(selectPatient);
-  const classes = useStyles();
 
   return (
     <Card

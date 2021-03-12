@@ -11,7 +11,7 @@ import uniqid from 'uniqid';
 
 import { Icon, BoxWrapper } from 'components';
 import { useSelector } from 'react-redux';
-import { selectNHS, selectName } from '../Patient/selectors';
+import { selectNHS, selectName } from '../../Patient/selectors';
 import { selectResult } from '../selectors';
 // import {
 //   selectResult,

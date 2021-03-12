@@ -1,5 +1,5 @@
 import React from 'react';
-import { FormLabel, Box, Typography, Grid, Badge } from '@material-ui/core';
+import { FormLabel, Box, Grid } from '@material-ui/core';
 import { Button, Text } from 'components';
 import CouldBeSepsis from './News-Just-Ask.jpg';
 import { useStyles } from '../styles';
@@ -7,19 +7,11 @@ import { useStyles } from '../styles';
 const SepsisScreening = () => {
   const classes = useStyles();
   return (
-    <Grid md={6}>
+    <Grid md={6} item>
       <Box m={2}>
-        {' '}
         <FormLabel component="legend">Sepsis Screening</FormLabel>
       </Box>
-      {/* <Badge
-        anchorOrigin={{
-          vertical: 'top',
-          horizontal: 'left',
-        }}
-        color="primary"
-        badgeContent="Sepsis Screening"
-      > */}
+
       <Box
         display="flex"
         alignItems="center"
@@ -54,7 +46,6 @@ const SepsisScreening = () => {
           </Grid>
         </Box>
       </Box>
-      {/* </Badge> */}
     </Grid>
   );
 };

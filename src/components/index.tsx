@@ -15,6 +15,7 @@ import NativeSelect from './NativeSelect';
 import { IconLabel, IconButton } from './IconButton';
 import BoxWrapper from './BoxWrapper';
 import Text from './Text';
+import Carousel from './Carousel';
 
 export {
   Layout,
@@ -38,4 +39,5 @@ export {
   IconButton,
   BoxWrapper,
   Text,
+  Carousel,
 };

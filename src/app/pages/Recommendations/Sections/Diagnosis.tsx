@@ -44,7 +44,6 @@ const Diagnosis = () => {
   const handleConfirm = React.useCallback(
     newRow => {
       const newRows = [...state, newRow];
-      console.log(newRows, 'ss');
       setState(newRows);
       handleClose();
     },
